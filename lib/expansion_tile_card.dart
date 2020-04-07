@@ -300,7 +300,12 @@ class _ExpansionTileCardState extends State<ExpansionTileCard> with SingleTicker
     return AnimatedBuilder(
       animation: _controller.view,
       builder: _buildChildren,
-      child: closed ? null : Column(children: widget.children),
+      child: Visibility(
+        maintainSize: false,
+        maintainState: true,
+        visible: !closed,
+        child: Column(children: widget.children),
+      ),
     );
 
   }
